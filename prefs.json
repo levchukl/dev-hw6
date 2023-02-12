@@ -1,0 +1,10 @@
+{
+  "dbUrl": "jdbc:h2:./testJDBC",
+  "initDbSql": "src/main/resources/sql/init_db.sql",
+  "insertSql": "src/main/resources/sql/populate_db.sql",
+  "selectMaxProjectsClientSql": "src/main/resources/sql/find_max_projects_client.sql",
+  "selectLongestProjectSql": "src/main/resources/sql/find_longest_project.sql",
+  "selectMaxSalaryWorkerSql": "src/main/resources/sql/find_max_salary_worker.sql",
+  "selectYoungestEldestWorkersSql": "src/main/resources/sql/find_youngest_eldest_workers.sql",
+  "selectProjectPricesSql": "src/main/resources/sql/print_project_prices.sql"
+}
