@@ -22,6 +22,14 @@ public class Database {
         return INSTANCE;
     }
     public Connection getConnection(){
+        try {
+            if (connection.isClosed()){
+                String connectionUrl = new Prefs().getPref(Prefs.DB_JDBC_CONNECTION_URL);
+                connection = DriverManager.getConnection(connectionUrl);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return connection;
     }
     public void close(){

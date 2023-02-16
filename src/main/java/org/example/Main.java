@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException {
         Database database = Database.getInstance();
-        new DatabaseInitService().initDB();
-       ClientService clientService = new ClientService(database.getConnection());
+     new DatabaseInitService().initDB();
+   ClientService clientService = new ClientService(database.getConnection());
     }
 }

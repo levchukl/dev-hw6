@@ -18,18 +18,25 @@ public class ClientService {
     private final PreparedStatement allClients;
     private final PreparedStatement selectMaxIdSt;
 
-    public ClientService(Connection connection) throws SQLException {
-        this.createClient = connection
-                .prepareStatement("INSERT INTO client (name) VALUES(?)");
-        this.getByIdClient = connection
-                .prepareStatement("SELECT name FROM client WHERE id = ?");
-        this.setNameClient = connection
-                .prepareStatement("UPDATE client SET name = ? WHERE id = ?");
-        this.deleteByIdClient = connection
-                .prepareStatement("DELETE FROM client WHERE id = ?");
-        this.allClients = connection.prepareStatement("SELECT id, name FROM client");
-        this.selectMaxIdSt = connection.prepareStatement("SELECT max(id) AS maxId FROM client");
+    public ClientService(Connection connection)  {
+        try {
+            createClient = connection
+                    .prepareStatement("INSERT INTO client (name) VALUES(?)");
+            getByIdClient = connection
+                    .prepareStatement("SELECT name FROM client WHERE id = ?");
+            setNameClient = connection
+                    .prepareStatement("UPDATE client SET name = ? WHERE id = ?");
+            deleteByIdClient = connection
+                    .prepareStatement("DELETE FROM client WHERE id = ?");
+            allClients = connection.prepareStatement("SELECT id, name FROM client");
+
+            selectMaxIdSt = connection.prepareStatement("SELECT max(id) AS maxId FROM client");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    
 
 
     public long create(String name) {
